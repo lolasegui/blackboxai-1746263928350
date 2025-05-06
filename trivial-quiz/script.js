@@ -37,6 +37,30 @@ const levels = {
       choices: ["Harry Potter", "Ron Weasley", "Hermione Granger", "Draco Malfoy"],
       answer: 0,
       image: "https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+    },
+    {
+      question: "¿Cuál es la capital de Francia?",
+      choices: ["París", "Londres", "Berlín", "Madrid"],
+      answer: 0,
+      image: "https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+    },
+    {
+      question: "¿Cuál es el río más largo del mundo?",
+      choices: ["Nilo", "Amazonas", "Yangtsé", "Misisipi"],
+      answer: 1,
+      image: "https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+    },
+    {
+      question: "¿Cuál es la capital de España?",
+      choices: ["Barcelona", "Madrid", "Sevilla", "Valencia"],
+      answer: 1,
+      image: "https://images.pexels.com/photos/460672/pexels-photo-460672.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+    },
+    {
+      question: "¿En qué continente se encuentra Egipto?",
+      choices: ["Asia", "África", "Europa", "Oceanía"],
+      answer: 1,
+      image: "https://images.pexels.com/photos/164338/pexels-photo-164338.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
     }
   ],
   medium: [
@@ -75,6 +99,30 @@ const levels = {
       choices: ["Elvis Presley", "Michael Jackson", "Prince", "Freddie Mercury"],
       answer: 1,
       image: "https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+    },
+    {
+      question: "¿Cuál es la capital de Canadá?",
+      choices: ["Toronto", "Ottawa", "Montreal", "Vancouver"],
+      answer: 1,
+      image: "https://images.pexels.com/photos/374870/pexels-photo-374870.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+    },
+    {
+      question: "¿Cuál es el desierto más grande del mundo?",
+      choices: ["Sahara", "Gobi", "Kalahari", "Antártico"],
+      answer: 0,
+      image: "https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+    },
+    {
+      question: "¿En qué país se encuentra la Torre Eiffel?",
+      choices: ["Italia", "Francia", "España", "Alemania"],
+      answer: 1,
+      image: "https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+    },
+    {
+      question: "¿Cuál es el océano más grande del mundo?",
+      choices: ["Atlántico", "Pacífico", "Índico", "Ártico"],
+      answer: 1,
+      image: "https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
     }
   ],
   hard: [
@@ -113,6 +161,30 @@ const levels = {
       choices: ["Elvis Presley", "Chuck Berry", "Little Richard", "Buddy Holly"],
       answer: 0,
       image: "https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+    },
+    {
+      question: "¿Cuál es la montaña más alta del mundo?",
+      choices: ["K2", "Everest", "Kangchenjunga", "Lhotse"],
+      answer: 1,
+      image: "https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+    },
+    {
+      question: "¿En qué país se encuentra la Gran Muralla China?",
+      choices: ["Japón", "China", "Corea del Sur", "Vietnam"],
+      answer: 1,
+      image: "https://images.pexels.com/photos/208745/pexels-photo-208745.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+    },
+    {
+      question: "¿Cuál es el lago más grande de agua dulce del mundo?",
+      choices: ["Lago Superior", "Lago Victoria", "Lago Baikal", "Lago Tanganica"],
+      answer: 0,
+      image: "https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+    },
+    {
+      question: "¿Cuál es la capital de Australia?",
+      choices: ["Sydney", "Melbourne", "Canberra", "Brisbane"],
+      answer: 2,
+      image: "https://images.pexels.com/photos/374870/pexels-photo-374870.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
     }
   ]
 };
@@ -144,6 +216,7 @@ class QuizGame {
 
   addScoreToRanking(name, emoticon, score, level) {
     this.ranking.push({ name, emoticon, score, level });
+    // Sort descending by score
     this.ranking.sort((a, b) => b.score - a.score);
     if (this.ranking.length > 10) {
       this.ranking = this.ranking.slice(0, 10);
@@ -277,7 +350,7 @@ class QuizGame {
           <span>${this.score === this.questions.length ? '👑' : ''}</span>
         </p>
         <button id="save-score-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded">
-          Guardar Puntuación
+          Guardar Puntuación y Ver Ranking
         </button>
         <button id="restart-btn" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded">
           Reiniciar Quiz
@@ -289,6 +362,9 @@ class QuizGame {
       this.renderRanking();
     };
     document.getElementById('restart-btn').onclick = () => this.renderNameEmoticonScreen();
+
+    // Automatically click the save-score-btn to show ranking immediately
+    document.getElementById('save-score-btn').click();
   }
 
   renderRanking() {
